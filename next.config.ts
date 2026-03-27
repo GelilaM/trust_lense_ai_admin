@@ -1,7 +1,14 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  async rewrites() {
+    return [
+      {
+        source: '/proxy/:path*',
+        destination: 'http://192.168.7.241:8000/:path*',
+      },
+    ];
+  },
 };
 
 export default nextConfig;

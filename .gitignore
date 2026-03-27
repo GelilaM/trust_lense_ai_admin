@@ -39,3 +39,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local AI agent workspace files
+.agent/
+
+# docs
+*.md
+!README.md
