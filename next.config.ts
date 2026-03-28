@@ -4,8 +4,8 @@ const nextConfig: NextConfig = {
   async rewrites() {
     return [
       {
-        source: '/proxy/:path*',
-        destination: 'http://192.168.7.241:8000/:path*',
+        source: "/proxy/:path*",
+        destination: "http://192.168.7.180:8000/:path*",
       },
     ];
   },

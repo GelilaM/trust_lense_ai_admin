@@ -1,14 +1,11 @@
-import { 
-  DashboardStatsResponse, 
-  RiskStatsResponse 
-} from "../types/api";
+import { DashboardStatsResponse, RiskStatsResponse } from "../types/api";
 
-const API_BASE_URL = "http://192.168.7.241:8000";
+const API_BASE_URL = "http://192.168.7.180:8000";
 
 export async function apiRequest<T>(
   path: string,
   options: RequestInit = {},
-  userId?: string
+  userId?: string,
 ): Promise<T> {
   const url = new URL(`${API_BASE_URL}${path}`);
   if (userId) {
@@ -25,7 +22,9 @@ export async function apiRequest<T>(
 
   if (!response.ok) {
     const errorData = await response.json().catch(() => ({}));
-    throw new Error(errorData.detail || `API request failed with status ${response.status}`);
+    throw new Error(
+      errorData.detail || `API request failed with status ${response.status}`,
+    );
   }
 
   return response.json();
@@ -34,7 +33,7 @@ export async function apiRequest<T>(
 export async function apiUpload<T>(
   path: string,
   formData: FormData,
-  userId?: string
+  userId?: string,
 ): Promise<T> {
   const url = new URL(`${API_BASE_URL}${path}`);
   if (userId) {
@@ -48,13 +47,17 @@ export async function apiUpload<T>(
 
   if (!response.ok) {
     const errorData = await response.json().catch(() => ({}));
-    throw new Error(errorData.detail || `API upload failed with status ${response.status}`);
+    throw new Error(
+      errorData.detail || `API upload failed with status ${response.status}`,
+    );
   }
 
   return response.json();
 }
 
-export async function getStatsOverview(userId: string): Promise<DashboardStatsResponse> {
+export async function getStatsOverview(
+  userId: string,
+): Promise<DashboardStatsResponse> {
   return apiRequest<DashboardStatsResponse>("/stats/overview", {}, userId);
 }
 
