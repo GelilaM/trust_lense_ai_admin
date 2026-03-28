@@ -1,11 +1,11 @@
 "use client";
 
 import * as React from "react";
-import { ShieldCheck, Eye, EyeOff } from "lucide-react";
+import Image from "next/image";
+import { Eye, EyeOff } from "lucide-react";
 import { PremiumCard, CardContent } from "@/components/common/premium-card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { cn } from "@/lib/utils";
 
 import { useRouter } from "next/navigation";
 import { useApiMutation } from "@/hooks/use-api";
@@ -40,15 +40,18 @@ export default function LoginPage() {
     <div className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-br from-blue-50 to-white p-4">
       <div className="w-full max-w-md space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
         {/* Logo Section */}
-        <div className="flex flex-col items-center gap-3">
-          <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-brand-navy text-white shadow-xl shadow-brand-navy/20">
-            <ShieldCheck className="h-8 w-8" />
-          </div>
-          <div className="flex flex-col items-center">
-            <h1 className="text-2xl font-bold tracking-tight text-brand-navy">
-              TrustLens AI
-            </h1>
-          </div>
+        <div className="flex flex-col items-center gap-4">
+          <Image
+            src="/Kifiya_Full_Color.svg"
+            alt="Kifiya"
+            width={591}
+            height={250}
+            priority
+            className="h-14 w-auto max-w-[min(100%,280px)] object-contain sm:h-16"
+          />
+          <h1 className="text-2xl font-bold tracking-tight text-brand-navy">
+            TrustLens AI
+          </h1>
         </div>
 
         {/* Login Card */}
